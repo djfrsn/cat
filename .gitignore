@@ -1,2 +1,5 @@
 node_modules
+
 dist
+// Babel compiled views for server
+server/views
