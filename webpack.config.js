@@ -1,9 +1,11 @@
 import path from 'path';
 
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+
 export default {
   entry: {
-    client: './client/client.js',
-    server: './client/server.js'
+    client: './client/index.js',
+    server: './server/renderApp.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -11,5 +13,6 @@ export default {
   },
   module: {
     rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
-  }
+  },
+  plugins: [new CleanWebpackPlugin(['dist'])]
 };
