@@ -5,11 +5,19 @@ import { updateName } from '../redux/actions';
 
 const App = ({ cats, dispatch }) => {
   return (
-    <div onClick={() => dispatch(updateName({ name: 'New!' }))}>
-      {cats.length} cats loaded
-      {cats.map(({ url, id }) => {
-        return <img key={id} src={url} />;
-      })}
+    <div>
+      <div className="card cat-card flex-center">
+        <header className="card-header">tabs...</header>
+        <div className="card-content">
+          <div className="content">
+            <div className="cats-container">
+              {cats.map(({ url, id }) => {
+                return <img className="cat-image" key={id} src={url} />;
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
