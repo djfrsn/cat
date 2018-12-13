@@ -25,7 +25,7 @@ export default {
   devServer: {
     hot: true,
     open: true,
-    contentBase: path.join(__dirname, '/dist'),
+    contentBase: path.join(__dirname, 'dist'),
     watchContentBase: true,
     proxy: [
       {
