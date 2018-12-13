@@ -4,7 +4,7 @@
   "description": "thecatapi.com app",
   "main": "server/index.js",
   "watch": {
-    "watch:server": "{server}/*.js"
+    "watch:server": "server/*.js"
   },
   "scripts": {
     "test": "npm run test",
@@ -12,7 +12,7 @@
     "build:client": "NODE_ENV=production node -r @babel/register node_modules/.bin/webpack-dev-server -p --config=webpack.config.js",
     "build": "npm run build:client && npm run build:server",
     "start": "npm run build && node dist/server",
-    "dev": "npm run build:client & npm run build:server && nodemon dist/server",
+    "dev": "npm run build:client & npm run watch & nodemon --watch dist/server dist/server",
     "watch:server": "npm run build:server",
     "watch": "npm-watch"
   },
