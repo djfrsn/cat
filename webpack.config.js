@@ -13,7 +13,7 @@ export default {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].js'
   },
   module: {
@@ -21,15 +21,16 @@ export default {
   },
 
   devtool: 'source-map',
-  plugins: [new CleanWebpackPlugin(['dist'])],
+  // plugins: [new CleanWebpackPlugin(['dist'])],
   devServer: {
+    hot: true,
+    // open: true,
     contentBase: path.join(__dirname, '/dist'),
     watchContentBase: true,
     proxy: [
       {
-        context: ['/api', '/auth'],
-        target: 'http://localhost:3088',
-        secure: false
+        context: ['/', '/api'],
+        target: 'http://localhost:3088'
       }
     ],
     port: 3030
