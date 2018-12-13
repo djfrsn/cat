@@ -1,3 +1,5 @@
+require('dotenv').config({ path: 'config.env' });
+
 import express from 'express';
 import path from 'path';
 
@@ -10,6 +12,6 @@ app.use(express.static(path.resolve(__dirname, '..')));
 
 app.use('/', routes);
 
-const server = app.listen('3088', () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`Express running 🚀 PORT ${server.address().port}`);
 });

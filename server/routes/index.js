@@ -6,7 +6,7 @@ import { catchErrors } from '../handlers/errorHandlers';
 import { getApp } from '../controllers/appController';
 import { getCats } from '../controllers/catController';
 
-router.get('/', getApp);
+router.get('/', catchErrors(getApp));
 
 router.get('/cats', catchErrors(getCats));
 

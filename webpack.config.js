@@ -24,13 +24,13 @@ export default {
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     hot: true,
-    open: true,
+    // open: true,
     contentBase: path.join(__dirname, 'dist'),
     watchContentBase: true,
     proxy: [
       {
         context: ['/', '/api'],
-        target: 'http://localhost:3088'
+        target: 'http://localhost:7777'
       }
     ],
     port: 3030
