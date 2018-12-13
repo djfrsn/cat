@@ -1,0 +1,25 @@
+{
+  "name": "cat",
+  "version": "0.0.0",
+  "description": "thecatapi.com app",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djfrsn/cat.git"
+  },
+  "keywords": [
+    "thecatapi.com",
+    "cat",
+    "cats",
+    "kitty"
+  ],
+  "author": "Dennis Jefferson <dennismjefferson@gmail.com> (dennisjefferson.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djfrsn/cat/issues"
+  },
+  "homepage": "https://cat.dennisjefferson.com"
+}
