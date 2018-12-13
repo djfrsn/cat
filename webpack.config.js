@@ -1,6 +1,8 @@
+require('dotenv').config({ path: 'config.env' });
+
 import path from 'path';
 import webpack from 'webpack';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+
 const is_dev = process.env.NODE_ENV === 'development';
 
 export default {
@@ -20,8 +22,7 @@ export default {
     rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }]
   },
 
-  devtool: 'source-map',
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [].concat(is_dev ? [new webpack.HotModuleReplacementPlugin()] : []),
   devServer: {
     hot: true,
     // open: true,
@@ -30,13 +31,9 @@ export default {
     proxy: [
       {
         context: ['/', '/api'],
-        target: 'http://localhost:7777'
+        target: `http://localhost:${process.env.PORT}`
       }
     ],
     port: 3030
-    // overlay: {
-    //   warnings: false,
-    //   errors: false
-    // }
   }
 };
