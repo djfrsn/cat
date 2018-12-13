@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 import { updateName } from '../redux/actions';
 
-const App = props => {
+const App = ({ cats }) => {
   return (
     <div onClick={() => props.dispatch(updateName({ name: 'New!' }))}>
-      Hello {props.name || 'stranger'}!
+      {cats.length} cats loaded
+      {cats.map(({ url, id }) => {
+        return <img key={id} src={url} />;
+      })}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { UPDATE_TEMPLATE } from './actions';
 
 const inital_state = {
-  name: ''
+  cats: []
 };
 
 function catReducer(state = inital_state, action) {
