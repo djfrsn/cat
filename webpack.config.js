@@ -4,8 +4,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 export default {
   entry: {
-    client: './client/index.js',
-    server: './server/renderApp.js'
+    bundle: './client'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

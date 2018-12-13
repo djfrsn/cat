@@ -4,7 +4,7 @@ const inital_state = {
   name: ''
 };
 
-function catReducer(inital_state, action) {
+function catReducer(state = inital_state, action) {
   switch (action.type) {
     case UPDATE_TEMPLATE:
       return {
@@ -12,7 +12,7 @@ function catReducer(inital_state, action) {
         name: action.payload.name
       };
     default:
-      return inital_state;
+      return state;
   }
 }
 

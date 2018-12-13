@@ -1,6 +1,6 @@
 export const UPDATE_TEMPLATE = 'UPDATE_TEMPLATE';
 
-export function updateTemplate(payload = {}) {
+export function updateName(payload = {}) {
   return {
     type: UPDATE_TEMPLATE,
     payload

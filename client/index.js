@@ -9,7 +9,6 @@ import App from './components/App';
 const state = window.__STATE__;
 
 delete window.__STATE__;
-
 const store = configureStore(state);
 
 //  hydrate - used to render html rendered by ReactDomServer
