@@ -9,7 +9,7 @@ export default function template(title, preloaded_state = {}, app = '') {
                 <title>${title}</title>
               </head>
               <body>
-                  <div id="app">${app}</div>
+                  <main id="app">${app}</main>
                   <script>
                     window.__STATE__ = ${JSON.stringify(preloaded_state)}
                   </script>

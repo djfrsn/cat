@@ -1,3 +1,16 @@
+/* General */
+body,
+html,
+main,
+.card-container {
+  height: 100%;
+}
+
+.card-container {
+  height: 100%;
+}
+
+/* Helpers */
 .flex-center {
   display: flex;
   align-items: center;
@@ -8,11 +21,21 @@
   padding-bottom: 2rem;
 }
 
+/* Cat Card */
 .cat-card {
   overflow: hidden;
 
-  width: 45%;
-  max-width: 50rem;
+  width: 100%;
+  max-width: 45rem;
+}
+
+.cat-card-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  text-align: center;
 }
 
 .cats-container {
