@@ -4,7 +4,7 @@
   "description": "thecatapi.com app",
   "main": "server/index.js",
   "scripts": {
-    "babel": "babel client -d server/views",
+    "babel": "babel client -d dist/server/views",
     "test": "npm run test"
   },
   "repository": {
