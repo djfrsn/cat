@@ -1,5 +1,5 @@
 import path from 'path';
-
+import webpack from 'webpack';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 const is_dev = process.env.NODE_ENV === 'development';
 
@@ -21,10 +21,10 @@ export default {
   },
 
   devtool: 'source-map',
-  // plugins: [new CleanWebpackPlugin(['dist'])],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     hot: true,
-    // open: true,
+    open: true,
     contentBase: path.join(__dirname, '/dist'),
     watchContentBase: true,
     proxy: [

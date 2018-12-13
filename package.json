@@ -4,18 +4,32 @@
   "description": "thecatapi.com app",
   "main": "server/index.js",
   "watch": {
-    "watch:server": "server/**/*.js",
-    "watch:client": "client/**/*.js"
+    "watch:server": {
+      "patterns": [
+        "server"
+      ],
+      "extensions": "js",
+      "quiet": true,
+      "runOnChangeOnly": true
+    },
+    "watch:client": {
+      "patterns": [
+        "client"
+      ],
+      "extensions": "js",
+      "quiet": true,
+      "runOnChangeOnly": true
+    }
   },
   "scripts": {
     "test": "npm run test",
     "babel:client": "babel client -d dist/server/views",
     "build:server": "echo 'Building server files' && npm run babel:client && babel server -d dist/server",
-    "build:client": "node -r @babel/register node_modules/.bin/webpack -p --config=webpack.config.js",
+    "build:client": "node -r @babel/register node_modules/.bin/webpack --config=webpack.config.js",
     "build": "npm run build:client && npm run build:server",
     "start": "npm run build && node dist/server",
-    "dev:client": "node -r @babel/register node_modules/.bin/webpack-dev-server -p --config=webpack.config.js",
-    "dev": "npm run dev:client & npm run watch & nodemon --watch dist/server dist/server",
+    "dev:client": "NODE_ENV=production node -r @babel/register node_modules/.bin/webpack-dev-server --config=webpack.config.js",
+    "dev": "npm run dev:client & npm run watch & npm run build:server && nodemon --watch dist/server dist/server",
     "watch:client": "npm run babel:client & npm run build:client",
     "watch:server": "npm run build:server",
     "watch": "npm-watch"
