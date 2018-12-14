@@ -1,10 +1,13 @@
 import React from 'react';
 
-export const CatCard = ({ cats }) => (
+export const CatCard = ({ cats, is_loading_cats }) => (
   <div className="cats-container">
     {cats.map(({ url, id }) => {
       return <img className="cat-image" key={id} src={url} />;
     })}
+    {is_loading_cats && (
+      <div className="cats-load-indicator">Loading more cats...</div>
+    )}
   </div>
 );
 

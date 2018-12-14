@@ -53,3 +53,9 @@ main,
   width: 100%;
   margin-bottom: 2rem;
 }
+
+.cats-load-indicator {
+  text-align: center;
+
+  font-weight: bold;
+}
