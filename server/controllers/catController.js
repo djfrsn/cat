@@ -1,5 +1,7 @@
-export const getCats = async (req, res) => {
-  res.json([
-    { id: '555', url: 'https://cdn2.thecatapi.com/images/h8is0fBop.jpg' }
-  ]);
+import getCats from './methods/getCats';
+
+export const getCatsApi = async (req, res) => {
+  const { cats } = await getCats('?limit=5');
+
+  res.json(cats);
 };

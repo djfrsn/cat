@@ -1,20 +1,9 @@
-import axios from 'axios';
-
 // views/server are read from dist/dir
 import renderApp from '../views/server';
 import { initial_state } from '../views/redux/reducers';
 import html from '../html';
 
-async function getCats(query) {
-  const { data } = await axios.get(
-    `${process.env.CAT_API_URL}/v1/images/search${query}`,
-    {
-      headers: { 'x-api-key': process.env.CAT_API_KEY }
-    }
-  );
-
-  return { cats: data };
-}
+import getCats from './methods/getCats';
 
 export const getApp = async (req, res) => {
   const { cats } = await getCats('?limit=3');
