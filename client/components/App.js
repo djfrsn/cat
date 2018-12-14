@@ -8,9 +8,10 @@ import infiniteScroll from '../helpers/infiniteScroll';
 
 import { loadCats } from '../redux/actions';
 // TODO:
-// favorites
+// favorites w/ auth
 // test
-// other optionals...
+// readme
+// other optionals?
 
 class App extends Component {
   constructor(props) {
