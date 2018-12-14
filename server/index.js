@@ -14,11 +14,11 @@ import {
   productionErrors
 } from './views/helpers/errorHandlers';
 
+import './models/User';
 import './models/Favorite';
 
 import routes from './routes';
 
-// Connect to our Database and handle any bad connections
 mongoose.connect(
   process.env.DATABASE,
   {
@@ -52,7 +52,10 @@ app.use(
     saveUninitialized: false,
     store: new MongoStore({
       mongooseConnection: mongoose.connection
-    })
+    }),
+    cookie: {
+      maxAge: 604800000 // 7 days
+    }
   })
 );
 app.use(passport.initialize());
@@ -64,7 +67,6 @@ if (app.get('env') === 'development') {
   app.use(developmentErrors);
 }
 
-// production error handler
 app.use(productionErrors);
 
 const server = app.listen(process.env.PORT, () => {
