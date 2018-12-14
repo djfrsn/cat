@@ -48,6 +48,12 @@ export const getApp = async (req, res) => {
     //     passport_res.json({ anonymous: true });
     //   }
     // });
-    res.send('ok');
+    const { preloaded_state, app } = renderApp({ ...initial_state, cats });
+
+    const app_html = html('Cat', preloaded_state, app);
+
+    res.setHeader('Cache-Control', 'public, max-age=600, s-maxage=1200');
+    res.setHeader('x-api-key', 'public, max-age=600, s-maxage=1200');
+    res.send(app_html);
   }
 };

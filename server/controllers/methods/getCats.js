@@ -8,5 +8,10 @@ export default async function getCats(query) {
     }
   );
 
-  return { cats: data };
+  // map api data to change api response of 'id' to mongo style '_id'
+  const cats = data.map(({ id, url }) => {
+    return { _id: id, url };
+  });
+
+  return { cats };
 }

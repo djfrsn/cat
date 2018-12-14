@@ -11,9 +11,9 @@ export const CatCard = ({
   show_favorites_button = true
 }) => (
   <div className="cats-container">
-    {cats.map(({ id, url }) => {
+    {cats.map(({ _id, url }) => {
       return (
-        <div key={id}>
+        <div key={_id}>
           {show_favorites_button && (
             <button
               className="favorites-button"
@@ -22,7 +22,7 @@ export const CatCard = ({
               ❤️
             </button>
           )}
-          <Cat id={id} url={url} />
+          <Cat id={_id} url={url} />
         </div>
       );
     })}
