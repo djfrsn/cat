@@ -64,3 +64,7 @@ main,
 /* Favorites */
 /* .favorites-empty-msg {
 } */
+
+.favorites-button {
+  margin-bottom: 0.25rem;
+}
