@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Tabs from './Tabs';
+import cardContent from './CardContent';
 
 import { updateName } from '../redux/actions';
 
@@ -10,21 +11,19 @@ import { updateName } from '../redux/actions';
 // infinite scroll
 // favorites
 
-const App = ({ cats, dispatch }) => {
+const App = props => {
+  const { tabs, active_tab_id, dispatch } = props;
+
   return (
     <div className="card-container flex-center">
       <div className="card cat-card flex-center">
         <header className="cat-card-header">
           <h1 className="app-title is-size-2">The Cat App</h1>
-          <Tabs />
+          <Tabs dispatch={dispatch} active_tab_id={active_tab_id} tabs={tabs} />
         </header>
         <div className="card-content">
           <div className="content">
-            <div className="cats-container">
-              {cats.map(({ url, id }) => {
-                return <img className="cat-image" key={id} src={url} />;
-              })}
-            </div>
+            {cardContent(tabs[active_tab_id].label, props)}
           </div>
         </div>
       </div>

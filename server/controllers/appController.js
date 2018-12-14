@@ -2,6 +2,7 @@ import axios from 'axios';
 
 // views/server are read from dist/dir
 import renderApp from '../views/server';
+import { initial_state } from '../views/redux/reducers';
 import html from '../html';
 
 async function getCats(query) {
@@ -16,9 +17,9 @@ async function getCats(query) {
 }
 
 export const getApp = async (req, res) => {
-  const initial_state = await getCats('?limit=10');
+  const { cats } = await getCats('?limit=10');
 
-  const { preloaded_state, app } = renderApp(initial_state);
+  const { preloaded_state, app } = renderApp({ ...initial_state, cats });
 
   const app_html = html('Cat', preloaded_state, app);
 

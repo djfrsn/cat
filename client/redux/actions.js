@@ -1,8 +1,8 @@
-export const UPDATE_TEMPLATE = 'UPDATE_TEMPLATE';
+export const SET = 'SET';
 
-export function updateName(payload = {}) {
+export function set(payload = {}) {
   return {
-    type: UPDATE_TEMPLATE,
+    type: SET,
     payload
   };
 }

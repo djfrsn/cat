@@ -1,15 +1,27 @@
-import { UPDATE_TEMPLATE } from './actions';
+import { SET } from './actions';
 
-const inital_state = {
-  cats: []
+export const initial_state = {
+  cats: [],
+  tabs: {
+    '0': {
+      id: '0',
+      label: 'Cats'
+    },
+    '1': {
+      id: '1',
+      label: 'Favorites'
+    }
+  },
+  active_tab_id: '0',
+  favorites: []
 };
 
-function catReducer(state = inital_state, action) {
+function catReducer(state = initial_state, action) {
   switch (action.type) {
-    case UPDATE_TEMPLATE:
+    case SET:
       return {
         ...state,
-        name: action.payload.name
+        ...action.payload
       };
     default:
       return state;
