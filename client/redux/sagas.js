@@ -3,12 +3,13 @@ import { SET, LOAD_CATS, LOAD_CATS_FAILURE } from './actions';
 
 import { getCats } from './api';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
+import { catchErrors } from '../helpers/errorHandlers';
+
 function* loadCats(action) {
   try {
     yield put({ type: SET, payload: { is_loading_cats: true } });
     const state = yield select();
-    const { cats } = yield call(getCats);
+    const { cats } = yield call(catchErrors(getCats));
 
     const state_update = { ...state, cats: state.cats.concat(cats) };
 
@@ -21,13 +22,6 @@ function* loadCats(action) {
   }
 }
 
-/*
-  Alternatively you may use takeLatest.
-
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
 function* CatSaga() {
   yield takeLatest(LOAD_CATS, loadCats);
 }

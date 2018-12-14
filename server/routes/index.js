@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { catchErrors } from '../handlers/errorHandlers';
+import { catchErrors } from '../views/helpers/errorHandlers';
 
 import { getApp } from '../controllers/appController';
 import { getCats } from '../controllers/catController';
