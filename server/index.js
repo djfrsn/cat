@@ -9,6 +9,10 @@ import AnonymousStrategy from 'passport-anonymous';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 const MongoStore = require('connect-mongo')(session);
+import {
+  developmentErrors,
+  productionErrors
+} from './views/helpers/errorHandlers';
 
 import './models/Favorite';
 
@@ -55,6 +59,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
+
+if (app.get('env') === 'development') {
+  /* Development Error Handler - Prints stack trace */
+  app.use(developmentErrors);
+}
+
+// production error handler
+app.use(productionErrors);
 
 const server = app.listen(process.env.PORT, () => {
   console.log(`Express running 🚀 PORT ${server.address().port}`);
