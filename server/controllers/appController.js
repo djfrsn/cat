@@ -17,7 +17,7 @@ async function getCats(query) {
 }
 
 export const getApp = async (req, res) => {
-  const { cats } = await getCats('?limit=10');
+  const { cats } = await getCats('?limit=3');
 
   const { preloaded_state, app } = renderApp({ ...initial_state, cats });
 
