@@ -30,7 +30,7 @@
     }
   },
   "scripts": {
-    "test": "npm run test",
+    "test": "cypress open",
     "clean": "rimraf dist",
     "copy": "cp-cli public dist",
     "babel:client": "babel client -d dist/server/views",
@@ -43,7 +43,8 @@
     "watch:client": "npm run babel:client & npm run build:client",
     "watch:server": "npm run build:server",
     "watch:styles": "npm run copy",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -64,31 +65,29 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
-    "connect-mongo": "^2.0.3",
+    "@babel/core": "^7.2.0",
     "cookie-parser": "^1.4.3",
-    "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "express-session": "^1.15.6",
     "mongoose": "^5.3.16",
+    "now-env": "^3.1.0",
     "passport": "^0.4.0",
     "passport-anonymous": "^1.0.1",
-    "passport-http": "^0.3.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-saga": "^0.16.2",
+    "@babel/register": "^7.0.0",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.0.0",
     "babel-loader": "^8.0.4",
     "cp-cli": "^1.1.2",
+    "dotenv": "^6.2.0",
     "nodemon": "^1.18.8",
     "npm-watch": "^0.5.0",
     "rimraf": "^2.6.2",
