@@ -1,5 +1,5 @@
 import getCats from './methods/getCats';
-import postFavoriteCat from './methods/postFavoriteCat';
+import saveFavoriteCat from './methods/saveFavoriteCat';
 
 export const getCatsApi = async (req, res) => {
   const { cats } = await getCats('?limit=5');
@@ -8,7 +8,9 @@ export const getCatsApi = async (req, res) => {
 };
 
 export const postFavoritesApi = async (req, res) => {
-  const { favorites } = await postFavoriteCat({ id: req.body.id });
+  const { url, id } = req.body;
 
-  res.send('ok');
+  const { favorites } = await saveFavoriteCat({ id, url });
+
+  res.json(favorites);
 };
