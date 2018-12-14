@@ -1,11 +1,23 @@
 import React from 'react';
 
+import { favoriteCat } from '../redux/actions';
+
 const Cat = ({ id, url }) => <img className="cat-image" src={url} />;
 
-export const CatCard = ({ cats, is_loading_cats }) => (
+export const CatCard = ({ cats, dispatch, is_loading_cats }) => (
   <div className="cats-container">
     {cats.map(({ id, url }) => {
-      return <Cat id={id} url={url} key={id} />;
+      return (
+        <div key={id}>
+          <button
+            className="favorites-button"
+            onClick={() => dispatch(favoriteCat({ id }))}
+          >
+            ❤️
+          </button>
+          <Cat id={id} url={url} />
+        </div>
+      );
     })}
     {is_loading_cats && (
       <div className="cats-load-indicator">Loading more cats...</div>

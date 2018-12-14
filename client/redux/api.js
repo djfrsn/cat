@@ -7,3 +7,11 @@ export async function getCats() {
     cats: data
   };
 }
+
+export async function postFavoriteCat(payload) {
+  const { data } = await axios.post('/favorites', payload);
+
+  return {
+    favorites: data
+  };
+}
