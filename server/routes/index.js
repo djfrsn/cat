@@ -1,9 +1,10 @@
 import express from 'express';
+import passport from 'passport';
 const router = express.Router();
 
 import { catchErrors } from '../views/helpers/errorHandlers';
 
-import { getApp } from '../controllers/appController';
+import { getApp, getLogin } from '../controllers/appController';
 import { getCatsApi } from '../controllers/catController';
 
 import { postFavoriteApi } from '../controllers/catController';

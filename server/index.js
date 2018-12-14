@@ -3,12 +3,13 @@ require('dotenv').config({ path: 'config.env' });
 import mongoose from 'mongoose';
 import path from 'path';
 import express from 'express';
-import session from 'express-session';
+// import session from 'express-session';
 import passport from 'passport';
 import AnonymousStrategy from 'passport-anonymous';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-const MongoStore = require('connect-mongo')(session);
+// const MongoStore = require('connect-mongo')(session);
+
 import {
   developmentErrors,
   productionErrors
@@ -30,8 +31,27 @@ mongoose.connection.on('error', err => {
   console.error(`😶🚫 😶 🚫 😶 🚫 😶 🚫 → ${err.message}`);
 });
 
+const User = mongoose.model('User');
+
+passport.use(new AnonymousStrategy());
+
 const app = express();
 
+app.use(passport.initialize());
+// app.use(passport.session());
+app.get(
+  '/login',
+  passport.authenticate(['anonymous'], { session: false }),
+  async function(req, res) {
+    if (req.user) {
+      res.json({ name: req.user.username });
+    } else {
+      const user = await new User().save();
+
+      res.json(user);
+    }
+  }
+);
 // Static files
 app.use(express.static(path.resolve(__dirname, '..')));
 
@@ -40,26 +60,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // extended allows for nesti
 
 app.use(cookieParser());
 
-passport.use(new AnonymousStrategy());
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(
-  session({
-    secret: process.env.SECRET,
-    key: process.env.KEY,
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
-    }),
-    cookie: {
-      maxAge: 604800000 // 7 days
-    }
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(
+//   session({
+//     secret: process.env.SECRET,
+//     key: process.env.KEY,
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore({
+//       mongooseConnection: mongoose.connection
+//     }),
+//     cookie: {
+//       maxAge: 604800000 // 7 days
+//     }
+//   })
+// );
 
 app.use('/', routes);
 

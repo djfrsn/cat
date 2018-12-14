@@ -32,7 +32,6 @@ class App extends Component {
   }
   render() {
     const { tabs, active_tab_id, dispatch } = this.props;
-    console.log(tabs[active_tab_id].label);
 
     return (
       <div className="card-container flex-center">
