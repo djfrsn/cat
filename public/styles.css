@@ -6,8 +6,8 @@ main,
   height: 100%;
 }
 
-.card-container {
-  height: 100%;
+.card-content {
+  flex-direction: column;
 }
 
 /* Helpers */
@@ -24,6 +24,7 @@ main,
 /* Cat Card */
 .cat-card {
   overflow: hidden;
+  flex-direction: column;
 
   width: 100%;
   max-width: 45rem;
@@ -58,4 +59,9 @@ main,
   text-align: center;
 
   font-weight: bold;
+}
+
+/* Favorites */
+.favorites-empty-msg {
+  display: inline-flex;
 }

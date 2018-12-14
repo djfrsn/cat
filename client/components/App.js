@@ -8,8 +8,9 @@ import infiniteScroll from '../helpers/infiniteScroll';
 
 import { loadCats } from '../redux/actions';
 // TODO:
-// infinite scroll
 // favorites
+// test
+// other optionals...
 
 class App extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class App extends Component {
               tabs={tabs}
             />
           </header>
-          <div className="card-content">
+          <div className="card-content flex-center">
             <div className="content" ref={this.scrollContainerRef}>
               {cardContent(tabs[active_tab_id].label, this.props)}
             </div>

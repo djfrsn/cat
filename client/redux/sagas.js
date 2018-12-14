@@ -5,6 +5,7 @@ import { getCats } from './api';
 
 import { catchErrors } from '../helpers/errorHandlers';
 
+// Fetch get /cats, and merge data into state
 function* loadCats(action) {
   try {
     yield put({ type: SET, payload: { is_loading_cats: true } });

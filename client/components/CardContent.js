@@ -1,9 +1,11 @@
 import React from 'react';
 
+const Cat = ({ id, url }) => <img className="cat-image" key={id} src={url} />;
+
 export const CatCard = ({ cats, is_loading_cats }) => (
   <div className="cats-container">
-    {cats.map(({ url, id }) => {
-      return <img className="cat-image" key={id} src={url} />;
+    {cats.map(({ id, url }) => {
+      return <Cat id={id} url={url} />;
     })}
     {is_loading_cats && (
       <div className="cats-load-indicator">Loading more cats...</div>
@@ -12,7 +14,17 @@ export const CatCard = ({ cats, is_loading_cats }) => (
 );
 
 export const FavoritesCard = ({ favorites }) => {
-  return <div>{favorites.length} favorites available</div>;
+  return (
+    <div className="favorites-container">
+      {favorites.length ? (
+        favorites.map(({ id, url }) => {
+          return <Cat id={id} url={url} />;
+        })
+      ) : (
+        <p className="favorites-empty-msg">Favorite a cat!</p>
+      )}
+    </div>
+  );
 };
 
 export default function cardContent(card_name, props) {
