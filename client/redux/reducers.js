@@ -2,6 +2,8 @@ import { SET } from './actions';
 
 export const initial_state = {
   cats: [],
+  is_loading_cats: false,
+  loaded_max_cats: false,
   tabs: {
     '0': {
       id: '0',

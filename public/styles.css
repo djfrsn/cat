@@ -38,7 +38,7 @@ main,
   text-align: center;
 }
 
-.cats-container {
+.content {
   display: flex;
   overflow-y: scroll;
   flex-direction: column;
