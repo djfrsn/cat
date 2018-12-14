@@ -4,32 +4,12 @@ import { connect } from 'react-redux';
 import Tabs from './Tabs';
 import cardContent from './CardContent';
 import hasWindow from '../helpers/hasWindow';
+import infiniteScroll from '../helpers/infiniteScroll';
 
 import { loadCats } from '../redux/actions';
 // TODO:
 // infinite scroll
 // favorites
-
-function infiniteScroll({ container, scope, loadMore }) {
-  // container.onscroll = () => {
-  //   console.log(scope);
-  //   // const {
-  //   //   props: { error, dispatch, is_loading_cats, loaded_max_cats }
-  //   // } = scope;
-  //   // // Bails early if:
-  //   // // * there's an error
-  //   // // * it's already loading
-  //   // // * there's nothing left to load
-  //   // if (error || is_loading_cats || !loaded_max_cats) return;
-  //   // // Checks that the page has scrolled to the bottom
-  //   // var scrollY = container.scrollHeight - container.scrollTop;
-  //   // var height = container.offsetHeight;
-  //   // var offset = height - scrollY;
-  //   // if (offset == 0 || offset == 1) {
-  //   //   dispatch(loadMore());
-  //   // }
-  // };
-}
 
 class App extends Component {
   constructor(props) {
@@ -38,9 +18,10 @@ class App extends Component {
     this.scrollContainerRef = React.createRef();
   }
   componentDidMount() {
+    // Check for window in case we're rendering on the server
     if (hasWindow) {
       infiniteScroll({
-        container: this.scrollContainerRef,
+        container: this.scrollContainerRef.current,
         scope: this,
         loadMore: loadCats
       });
@@ -61,7 +42,7 @@ class App extends Component {
             />
           </header>
           <div className="card-content">
-            <div className="content">
+            <div className="content" ref={this.scrollContainerRef}>
               {cardContent(tabs[active_tab_id].label, this.props)}
             </div>
           </div>
