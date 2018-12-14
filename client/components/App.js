@@ -12,6 +12,7 @@ import { loadCats } from '../redux/actions';
 // test
 // readme
 // other optionals?
+// bugs: infinite scroll is still active on favorites tab...fetches for more cats happen in the background
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends Component {
   }
   render() {
     const { tabs, active_tab_id, dispatch } = this.props;
+    console.log(tabs[active_tab_id].label);
 
     return (
       <div className="card-container flex-center">

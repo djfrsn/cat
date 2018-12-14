@@ -4,17 +4,12 @@ import { favoriteCat } from '../redux/actions';
 
 const Cat = ({ id, url }) => <img className="cat-image" src={url} />;
 
-export const CatCard = ({
-  cats,
-  dispatch,
-  is_loading_cats,
-  show_favorites_button = true
-}) => (
+export const CatCard = ({ cats, dispatch, is_loading_cats, is_favorites }) => (
   <div className="cats-container">
     {cats.map(({ _id, url }) => {
       return (
         <div key={_id}>
-          {show_favorites_button && (
+          {!is_favorites && (
             <button
               className="favorites-button"
               onClick={() => dispatch(favoriteCat({ url }))}
@@ -26,9 +21,10 @@ export const CatCard = ({
         </div>
       );
     })}
-    {is_loading_cats && (
-      <div className="cats-load-indicator">Loading more cats...</div>
-    )}
+    {is_loading_cats &&
+      !is_favorites && (
+        <div className="cats-load-indicator">Loading more cats...</div>
+      )}
   </div>
 );
 
@@ -39,7 +35,7 @@ export const FavoritesCard = ({ favorites, is_loading_cats }) => {
         <CatCard
           cats={favorites}
           is_loading_cats={is_loading_cats}
-          show_favorites_button={false}
+          is_favorites={true}
         />
       ) : (
         <p className="favorites-empty-msg">Favorite a cat!</p>
