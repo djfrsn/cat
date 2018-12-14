@@ -11,7 +11,7 @@ export const CatCard = ({ cats, dispatch, is_loading_cats }) => (
         <div key={id}>
           <button
             className="favorites-button"
-            onClick={() => dispatch(favoriteCat({ id }))}
+            onClick={() => dispatch(favoriteCat({ url }))}
           >
             ❤️
           </button>

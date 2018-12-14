@@ -10,6 +10,8 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 const MongoStore = require('connect-mongo')(session);
 
+import './models/Favorite';
+
 import routes from './routes';
 
 // Connect to our Database and handle any bad connections

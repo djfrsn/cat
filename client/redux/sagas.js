@@ -28,11 +28,9 @@ function* loadCats() {
 function* favoriteCat(action) {
   try {
     const state = yield select();
-    const { favorites } = yield call(catchErrors(postFavoriteCat), [
-      {
-        id: action.payload.id
-      }
-    ]);
+    const { favorites } = yield call(catchErrors(postFavoriteCat), {
+      url: action.payload.url
+    });
 
     const state_update = {
       ...state,
