@@ -61,7 +61,6 @@ app.use(passport.session());
 app.use('/', routes);
 
 if (app.get('env') === 'development') {
-  /* Development Error Handler - Prints stack trace */
   app.use(developmentErrors);
 }
 
