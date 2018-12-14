@@ -4,7 +4,7 @@ thecatapi.com app
 
 ## Requirements
 
-- Linux OS(not tested on Windows OS)
+- UNIX based OS(not tested on Windows OS)
 - Node 7+
 - copy config.env(sent by email) at repo root
 
@@ -38,3 +38,4 @@ Async client request done w/ Redux-Saga
 
 - App not deployed, please run on localhost
 - The build system was hacked together, please refresh page if app doesn't update properly
+- If you get a mongoose error on 'npm run dev' it is because your config.env is missing!
