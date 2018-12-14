@@ -9,9 +9,9 @@ export async function getCats() {
 }
 
 export async function postFavoriteCat(payload) {
-  const { data } = await axios.post('/favorites', payload);
+  const { data } = await axios.post('/favorite', payload);
 
   return {
-    favorites: data
+    favorite: data
   };
 }

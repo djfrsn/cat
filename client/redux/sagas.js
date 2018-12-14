@@ -1,10 +1,14 @@
 import { select, call, put, takeLatest, takeEvery } from 'redux-saga/effects';
-import { SET, LOAD_CATS, LOAD_CATS_FAILURE, FAVORITE_CAT } from './actions';
+import { SET, LOAD_CATS, API_FAILURE, FAVORITE_CAT } from './actions';
 
 import { getCats } from './api';
 import { postFavoriteCat } from './api';
 
 import { catchErrors } from '../helpers/errorHandlers';
+
+function getError(err) {
+  return { type: SET, payload: { errors: { message: err.message } } };
+}
 
 // Fetch get /cats, and merge data into state
 function* loadCats() {
@@ -17,10 +21,14 @@ function* loadCats() {
 
     yield put({
       type: SET,
-      payload: { ...state_update, is_loading_cats: false }
+      payload: {
+        ...state_update,
+        is_loading_cats: false,
+        errors: undefined
+      }
     });
   } catch (e) {
-    yield put({ type: LOAD_CATS_FAILURE, message: e.message });
+    yield put(getError(e));
   }
 }
 
@@ -28,13 +36,16 @@ function* loadCats() {
 function* favoriteCat(action) {
   try {
     const state = yield select();
-    const { favorites } = yield call(catchErrors(postFavoriteCat), {
-      url: action.payload.url
+
+    const { favorite } = yield call(catchErrors(postFavoriteCat), {
+      url: action.payload.url,
+      user_id: state.user_id
     });
 
     const state_update = {
       ...state,
-      favorites: state.favorites.concat(favorites)
+      favorites: state.favorites.concat(favorite),
+      errors: undefined
     };
 
     yield put({
@@ -42,7 +53,7 @@ function* favoriteCat(action) {
       payload: state_update
     });
   } catch (e) {
-    yield put({ type: LOAD_CATS_FAILURE, message: e.message });
+    yield put(getError(e));
   }
 }
 

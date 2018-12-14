@@ -13,6 +13,6 @@ router.get('/', catchErrors(getApp));
 
 router.get('/cats', catchErrors(getCatsApi));
 
-router.post('/favorites', catchErrors(postFavoriteApi));
+router.post('/favorite', catchErrors(postFavoriteApi));
 
 export default router;

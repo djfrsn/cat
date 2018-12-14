@@ -1,8 +1,9 @@
 import { SET } from './actions';
 
 export const initial_state = {
-  error: false,
+  error: undefined,
   cats: [],
+  user_id: undefined,
   is_loading_cats: false,
   loaded_max_cats: false,
   tabs: {

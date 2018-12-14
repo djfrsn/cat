@@ -4,17 +4,24 @@ import { initial_state } from '../views/redux/reducers';
 import html from '../html';
 
 import getCats from './methods/getCats';
+import getFavorites from './methods/getFavorites';
 
 export const getApp = async (req, res) => {
-  const { cats } = await getCats('?limit=3');
+  const user = req.signedCookies.user;
 
-  console.log('user', req.user);
-  if (req.user) {
-    console.log(
-      'we have a user, authenticate user & render app with user data',
-      req.user
-    );
-    const { preloaded_state, app } = renderApp({ ...initial_state, cats });
+  if (user) {
+    const { _id: user_id } = user;
+    const { cats } = await getCats('?limit=3');
+
+    // Todo: get user favorites and add to state
+    const favorites = await getFavorites({ user_id });
+
+    const { preloaded_state, app } = renderApp({
+      ...initial_state,
+      cats,
+      favorites,
+      user_id
+    });
 
     const app_html = html('Cat', preloaded_state, app);
 

@@ -10,9 +10,9 @@ export const getCatsApi = async (req, res) => {
 };
 
 export const postFavoriteApi = async (req, res) => {
-  const { url } = req.body;
+  const { url, user_id } = req.body;
 
-  const data = await new Favorite({ url, user_id: '0' }).save();
+  const data = await new Favorite({ url, user_id }).save();
 
   res.json(data);
 };
