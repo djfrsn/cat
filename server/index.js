@@ -1,4 +1,4 @@
-require('now-env');
+require('dotenv').config({ path: 'config.env' });
 
 import mongoose from 'mongoose';
 import path from 'path';
