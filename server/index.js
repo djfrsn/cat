@@ -28,6 +28,8 @@ mongoose.connect(
 );
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises, needed for async/await support
 mongoose.connection.on('error', err => {
+  console.log('error', err);
+
   console.error(`🤫 🚫 🤫 🚫 🤫 🚫 🤫 🚫 🤫 → ${err.message}`);
 });
 
