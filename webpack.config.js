@@ -1,5 +1,4 @@
 require('now-env');
-console.log(process.env.PORT);
 
 import path from 'path';
 import webpack from 'webpack';

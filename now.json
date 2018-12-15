@@ -12,8 +12,18 @@
   },
   "builds": [
     {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
       "src": "dist/server/index.js",
-      "use": "@now/node-server"
+      "use": "@now/node-server",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "regions": ["sfo1"]
