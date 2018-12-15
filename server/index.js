@@ -20,6 +20,8 @@ import routes from './routes';
 
 import { login } from './controllers/authController';
 
+console.log('database', process.env.DATABASE);
+
 mongoose.connect(
   process.env.DATABASE,
   {
