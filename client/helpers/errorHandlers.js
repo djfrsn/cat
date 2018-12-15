@@ -37,5 +37,7 @@ export const developmentErrors = (err, req, res, next) => {
 */
 export const productionErrors = (err, req, res, next) => {
   res.status(err.status || 500);
+  console.log('err', err);
+
   res.send('Please try again');
 };

@@ -1,0 +1,20 @@
+{
+  "name": "cat",
+  "version": 2,
+  "alias": "cat.dennisjefferson.com",
+  "env": {
+    "NODE_ENV": "@node-env",
+    "CAT_API_URL": "@cat-api-url",
+    "CAT_API_KEY": "@cat-api-key",
+    "DATABASE": "@database",
+    "PORT": "@port",
+    "SECRET": "@secret"
+  },
+  "builds": [
+    {
+      "src": "dist/server/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "regions": ["sfo1"]
+}

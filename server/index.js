@@ -1,4 +1,4 @@
-require('dotenv').config({ path: 'config.env' });
+require('now-env');
 
 import mongoose from 'mongoose';
 import path from 'path';
@@ -28,7 +28,7 @@ mongoose.connect(
 );
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises, needed for async/await support
 mongoose.connection.on('error', err => {
-  console.error(`😶 🚫 😶 🚫 😶 🚫 😶 🚫 → ${err.message}`);
+  console.error(`🤫 🚫 🤫 🚫 🤫 🚫 🤫 🚫 🤫 → ${err.message}`);
 });
 
 const app = express();
@@ -55,6 +55,6 @@ if (app.get('env') === 'development') {
 
 app.use(productionErrors);
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(`Express running 🚀 PORT ${server.address().port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Express running 🚀 PORT ${process.env.PORT}`);
 });
