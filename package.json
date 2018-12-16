@@ -42,6 +42,7 @@
     "start": "node dist/server/index.js",
     "dev:client": "node -r @babel/register node_modules/.bin/webpack-dev-server --config=webpack.config.js",
     "dev": "npm run clean && npm run copy:dev & npm run dev:client & npm run watch & npm run build:server && nodemon --watch dist/server dist/server",
+    "deploy": "now && now alias",
     "watch:client": "npm run babel:client & npm run build:client",
     "watch:server": "npm run build:server",
     "watch:styles": "npm run copy",
