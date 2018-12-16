@@ -33,6 +33,7 @@
     "test": "cypress open",
     "clean": "echo '🗑️ Cleaning dist' && rimraf dist",
     "copy": "cp-cli public dist",
+    "cdn:build": "npm run buid:client && npm run copy",
     "babel:client": "babel client -d dist/server/views",
     "build:server": "echo '📦 Building server files' && npm run babel:client && babel server -d dist/server",
     "build:client": "node -r @babel/register node_modules/.bin/webpack --config=webpack.config.js",
