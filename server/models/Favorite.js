@@ -8,8 +8,7 @@ const favoriteSchema = new mongoose.Schema({
   },
   url: {
     type: String,
-    required: 'Please enter a url!',
-    unique: true
+    required: 'Please enter a url!'
   },
   created: {
     type: Date,
