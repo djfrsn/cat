@@ -4,6 +4,7 @@
   "alias": "cat.dennisjefferson.com",
   "env": {
     "NODE_ENV": "@node-env",
+    "CDN_URL": "@cdn-url",
     "CAT_API_URL": "@cat-api-url",
     "CAT_API_KEY": "@cat-api-key",
     "DATABASE": "@database",
