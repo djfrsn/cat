@@ -14,6 +14,14 @@
     {
       "src": "dist/server/index.js",
       "use": "@now/node-server"
+    },
+    {
+      "src": "dist/bundle.js",
+      "use": "@now/static"
+    },
+    {
+      "src": "dist/styles.css",
+      "use": "@now/static"
     }
   ],
   "regions": ["sfo1"],
@@ -21,6 +29,20 @@
     {
       "src": "/.*",
       "dest": "dist/server/index.js"
+    },
+    {
+      "src": "/styles.css",
+      "methods": ["GET"],
+      "status": 200,
+      "dest": "/dist/styles.css",
+      "headers": { "content-type": "text/css" }
+    },
+    {
+      "src": "/bundle.js",
+      "methods": ["GET"],
+      "status": 200,
+      "dest": "/dist/bundle.js",
+      "headers": { "content-type": "text/javascript" }
     }
   ]
 }
