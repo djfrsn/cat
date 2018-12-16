@@ -30,20 +30,6 @@
     {
       "src": "/.*",
       "dest": "dist/server/index.js"
-    },
-    {
-      "src": "/styles.css",
-      "methods": ["GET"],
-      "status": 200,
-      "dest": "/dist/styles.css",
-      "headers": { "content-type": "text/css" }
-    },
-    {
-      "src": "/bundle.js",
-      "methods": ["GET"],
-      "status": 200,
-      "dest": "/dist/bundle.js",
-      "headers": { "content-type": "text/javascript" }
     }
   ]
 }

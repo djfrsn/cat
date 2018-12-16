@@ -51,11 +51,11 @@ app.use('/', routes);
 // Add login route
 login(app);
 
-if (app.get('env') === 'development') {
-  app.use(developmentErrors);
-}
+// if (app.get('env') === 'development') {
+app.use(developmentErrors);
+//}
 
-app.use(productionErrors);
+// app.use(productionErrors);
 
 app.listen(process.env.PORT, () => {
   console.log(`Express running 🚀 PORT ${process.env.PORT}`);
