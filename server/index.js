@@ -7,6 +7,7 @@ import passport from 'passport';
 import AnonymousStrategy from 'passport-anonymous';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import {
   developmentErrors,
@@ -34,6 +35,13 @@ mongoose.connection.on('error', err => {
 });
 
 const app = express();
+
+var corsOptions = {
+  origin: 'https://dennisjefferson.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 app.use(passport.initialize());
 passport.use(new AnonymousStrategy());
