@@ -35,7 +35,7 @@ Anon Users/Favorited cat stored in MongoDB
 Async client request done w/ Redux-Saga
 
 ## Notes
-
+- Infinite scroll doesn't always work, I'll be looking into this issue
 - Deployed @ cat.dennisjefferson.com
 - The build system was hacked together, please refresh page if app doesn't update properly
 - If you get a mongoose error on 'npm run dev' it is because your now-secrets.json is missing!
